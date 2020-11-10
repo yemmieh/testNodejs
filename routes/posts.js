@@ -7,6 +7,16 @@ const Post = require('../models/Post')
 
 const router = express.Router();
 
+
+/**
+ * @swagger
+ * /posts/:
+ *  get:
+ *      description: mongodb post
+ *      responses:
+ *          '200':
+ *              description: mongodb
+ */
 router.get('/',async (req,res) =>{
     try{
         const posts = await Post.find();
@@ -19,6 +29,16 @@ router.get('/post',(req,res) =>{
     res.send('We are on post in post')
 })
 
+
+/**
+ * @swagger
+ * /posts/:
+ *  post:
+ *      description: mongodb post
+ *      responses:
+ *          '200':
+ *              description: mongodb
+ */
 router.post('/',(req,res) => 
 {
     const post = new Post({
