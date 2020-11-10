@@ -43,31 +43,31 @@ mongoose.connect(process.env.DB_CONNECTION,{useNewUrlParser:true,useUnifiedTopol
 )
 
 //ROUTES
-/**
- * @swagger
- * /:
- *  get:
- *      description: home url
- *      responses:
- *          '200':
- *              description: a success response
- */
-app.get('/',(req,res)=>{
- res.status(200).send('we are on home')
-});
+// /**
+//  * @swagger
+//  * /:
+//  *  get:
+//  *      description: home url
+//  *      responses:
+//  *          '200':
+//  *              description: a success response
+//  */
+// app.get('/',(req,res)=>{
+//  res.status(200).send('we are on home')
+// });
 
-/**
- * @swagger
- * /what:
- *  get:
- *      description: Get what return
- *      responses:
- *          '200':
- *              description: a success response
- */
-app.get('/what',(req,res)=>{
-    res.status(200).send('we are on what')
-});
+// /**
+//  * @swagger
+//  * /what:
+//  *  get:
+//  *      description: Get what return
+//  *      responses:
+//  *          '200':
+//  *              description: a success response
+//  */
+// app.get('/what',(req,res)=>{
+//     res.status(200).send('we are on what')
+// });
 
 
 app.listen('3000')
