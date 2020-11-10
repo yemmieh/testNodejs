@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv/config')
 const app = express();
 
@@ -29,11 +30,7 @@ const postRoute = require('./routes/posts')
 
 
 //Middleware
-app.use('/post',()=>{
-    console.log('this is a middleware running')
-})
-
-
+app.use(cors())
 app.use(bodyParser.json())
 app.use('/posts',postRoute)
 
