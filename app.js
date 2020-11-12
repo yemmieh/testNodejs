@@ -27,12 +27,14 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocs));
 //IMPORT ROUTES
 const postRoute = require('./routes/posts')
+const authRoute = require('./routes/auth')
 
 
 //Middleware
 app.use(cors())
 app.use(bodyParser.json())
 app.use('/posts',postRoute)
+app.use('/auth',authRoute)
 
 //Connect to DB
 mongoose.connect(process.env.DB_CONNECTION,{useNewUrlParser:true,useUnifiedTopology: true},()=>

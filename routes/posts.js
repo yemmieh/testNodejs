@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose')
 const Post = require('../models/Post')
 
+const verify = require('./verifyToken');
 
 
 
@@ -17,7 +18,7 @@ const router = express.Router();
  *          '200':
  *              description: mongodb
  */
-router.get('/',async (req,res) =>{
+router.get('/',verify,async (req,res) =>{
     try{
         const posts = await Post.find();
         res.json(posts);
@@ -25,7 +26,7 @@ router.get('/',async (req,res) =>{
         res.json({errormsg:err})
     }
 })
-router.get('/post',(req,res) =>{
+router.get('/post',verify,(req,res) =>{
     res.send('We are on post in post')
 })
 
@@ -45,7 +46,7 @@ router.get('/post',(req,res) =>{
  *          '200':
  *              description: mongodb
  */
-router.get('/:postId',async (req,res) =>{
+router.get('/:postId',verify,async (req,res) =>{
     try{
         console.log(req.params)
         const post = await Post.findById(req.params.postId);
@@ -72,7 +73,7 @@ router.get('/:postId',async (req,res) =>{
  *          '200':
  *              description: mongodb
  */
-router.delete('/:postId',async (req,res) =>{
+router.delete('/:postId',verify,async (req,res) =>{
     try{
         console.log(req.params)
         const removePost = await Post.remove({_id:req.params.postId});
@@ -108,7 +109,7 @@ router.delete('/:postId',async (req,res) =>{
 *        201:
 *          description: mongodb data updated!
 */
-router.patch('/:postId',async (req,res) =>{
+router.patch('/:postId',verify,async (req,res) =>{
     try{
         console.log(req.params)
         console.log(req.body)
@@ -147,7 +148,7 @@ router.patch('/:postId',async (req,res) =>{
 *        201:
 *          description: mongodb data created!
 */
-router.post('/',(req,res) => 
+router.post('/',verify,(req,res) => 
 {
     const post = new Post({
         title:req.body.title,
