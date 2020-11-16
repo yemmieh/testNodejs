@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+// const postData = require('./tests/postData')
 require('dotenv/config')
 const app = express();
 
